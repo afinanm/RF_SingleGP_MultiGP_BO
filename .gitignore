@@ -1,0 +1,20 @@
+
+files/borrar.py
+files/multiGP_loops.py
+files/singleGP_loops.py
+ntbks/
+data/
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+.ipynb_checkpoints/
+

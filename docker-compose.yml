@@ -1,0 +1,22 @@
+services:
+  botorch-env:
+    build: .
+    container_name: botorch_gpu_env
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - ./files:/app/files
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./plots:/app/plots
+    ports:
+      - "8888:8888"  # Jupyter Notebook
+    stdin_open: true
+    tty: true
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''

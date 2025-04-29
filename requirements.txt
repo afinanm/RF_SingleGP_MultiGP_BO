@@ -1,0 +1,11 @@
+botorch
+#gpytorch
+scikit-learn
+scipy
+numpy>=1.5
+pandas>=1.5
+matplotlib
+jupyter 
+notebook
+pyarrow
+seaborn
