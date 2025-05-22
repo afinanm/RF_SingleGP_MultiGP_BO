@@ -9,3 +9,6 @@ jupyter
 notebook
 pyarrow
 seaborn
+
+
+#botorch latest version 0.12.0 y python >=3.9

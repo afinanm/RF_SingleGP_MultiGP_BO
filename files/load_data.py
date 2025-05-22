@@ -36,6 +36,31 @@ def load_lowdim_data(seed):
 
     return X_train, X_test, y_train, y_test
 
+
+def load_lowdim_neuro_data(seed):
+    adnimerge_sub = load_adnimerge_data()
+
+    roi = pd.read_parquet('../data/baseline_roi_neuromorph_df.parquet')
+    roi['RID'] = roi['RID'].astype(int)
+    roi.drop(columns=['subject', 'session_number'], inplace=True)
+    data = adnimerge_sub.merge(roi, on='RID', how='inner')
+    
+    y_classification = data['DX_bl']
+    X = data.drop(columns=['RID', 'DX_bl'])
+        
+    X = X.astype('float32')
+    y_clas_enc = LabelEncoder()
+    y_classification = y_clas_enc.fit_transform(y_classification)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y_classification, test_size=0.2, random_state=seed
+        )
+
+    return X_train, X_test, y_train, y_test
+
+
+
+
 def load_highdim_data(seed):
     adnimerge_sub = load_adnimerge_data()
 
